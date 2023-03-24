@@ -45,6 +45,7 @@ QUESTIONS_MAP = {
 }
 BUCKET = 'cs342-2023-allergy.appspot.com'
 FIRESTORE = 'https://cs342-2023-allergy.firebaseio.com/'
+ACCOUNTKEY = 'serviceAccountKey.json'
 
 # Streamlit encourages well-structured code, like starting execution in a main() function.
 def main():
@@ -88,7 +89,7 @@ def main():
 # @st.cache(hash_funcs={firebase_admin.firestore.firestore.DocumentReference: id})
 def init_firebase():
     # Init firebase with your credentials
-    cred = credentials.Certificate("serviceAccountKey.json")
+    cred = credentials.Certificate(ACCOUNTKEY)
     try:
         firebase_admin.initialize_app(cred, {'storageBucket': BUCKET, 
                                         'databaseURL': FIRESTORE})
